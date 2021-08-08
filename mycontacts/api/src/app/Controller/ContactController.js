@@ -23,11 +23,13 @@ class ContactsController {
     const {
       name, email, phone, birth, category_id,
     } = request.body;
-    const existsContact = await ContactsRepository.findByEmail(email);
+    const nameUpper = name.toUpperCase();
+    const emailUpper = email.toUpperCase();
+    const existsContact = await ContactsRepository.findByEmail(emailUpper);
     if (existsContact) {
       return response.status(400).json({ error: 'This E-mail is alread in use' });
     }
-    if (!name) {
+    if (!nameUpper) {
       return response.json(400).json({ error: 'NAME is required' });
     }
     if (!phone) {
@@ -48,10 +50,12 @@ class ContactsController {
     } = request.body;
     const { id } = request.params;
     const existsContact = await ContactsRepository.findById(id);
+    const nameUpper = name.toUpperCase();
+    const emailUpper = email.toUpperCase();
     if (!existsContact) {
       return response.status(400).json({ error: 'This Contacts does not exists' });
     }
-    if (!name) {
+    if (!nameUpper) {
       return response.json(400).json({ error: 'NAME is required' });
     }
     if (!phone) {
@@ -60,7 +64,7 @@ class ContactsController {
     if (!birth) {
       return response.json(400).json({ error: 'BIRTH is required' });
     }
-    const existsEmail = await ContactsRepository.findByEmail(email);
+    const existsEmail = await ContactsRepository.findByEmail(emailUpper);
     if (existsEmail && existsEmail.id !== id) {
       return response.status(400).json({ error: 'This E-mail is already in use' });
     }

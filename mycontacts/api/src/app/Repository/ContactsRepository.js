@@ -28,23 +28,27 @@ class ContactsRepository {
   async create({
     name, email, phone, birth, category_id,
   }) {
+    const nameUpper = name.toUpperCase();
+    const emailUpper = email.toUpperCase();
     const [rows] = await db.query(`
     INSERT INTO contacts (name, email, phone, birth, category_id)
     VALUES ($1, $2, $3, $4, $5)
     RETURNING*
-    `, [name, email, phone, birth, category_id]);
+    `, [nameUpper, emailUpper, phone, birth, category_id]);
     return rows;
   }
 
   async update(id, {
     name, email, phone, birth, category_id,
   }) {
+    const nameUpper = name.toUpperCase();
+    const emailUpper = email.toUpperCase();
     const [rows] = await db.query(`
     UPDATE contacts 
     SET name=$1, email=$2, phone=$3, birth=$4, category_id=$5
     WHERE id = $6
     RETURNING*
-    `, [name, email, phone, birth, category_id, id]);
+    `, [nameUpper, emailUpper, phone, birth, category_id, id]);
     return rows;
   }
 

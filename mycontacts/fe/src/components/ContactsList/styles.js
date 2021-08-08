@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between ;
   strong {
     color: #222;
     font-size: 24px;
@@ -25,6 +25,7 @@ export const Header = styled.header`
   &:hover {
     background: ${({ theme }) => theme.colors.primary.main};
     color: #fff
+
     }
   }
 `;

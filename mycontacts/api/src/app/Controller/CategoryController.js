@@ -23,11 +23,12 @@ class CategoryController {
     const {
       name,
     } = request.body;
+    const nameUpper = name.toUpperCase();
     const existsCategory = await CategoriesRepository.findByName(name);
     if (existsCategory) {
       return response.status(400).json({ error: 'This NAME is alread in use' });
     }
-    if (!name) {
+    if (!nameUpper) {
       return response.json(400).json({ error: 'NAME is required' });
     }
     const category = await CategoriesRepository.create({
@@ -41,11 +42,12 @@ class CategoryController {
       name,
     } = request.body;
     const { id } = request.params;
+    const nameUpper = name.toUpperCase();
     const existsCategory = await CategoriesRepository.findById(id);
     if (!existsCategory) {
       return response.status(400).json({ error: 'This categories does not exists' });
     }
-    if (!name) {
+    if (!nameUpper) {
       return response.json(400).json({ error: 'NAME is required' });
     }
     const existsName = await CategoriesRepository.findByName(name);
