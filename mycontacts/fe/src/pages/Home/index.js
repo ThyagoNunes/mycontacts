@@ -16,7 +16,7 @@ export default function Home() {
 
       <Header>
         <strong>3 contatos</strong>
-        <a href="/">Novo contato</a>
+        <a href="/new">Novo contato</a>
       </Header>
 
       <ListContainer>
@@ -32,14 +32,14 @@ export default function Home() {
         <div className="info">
           <div className="contact-name">
             <strong>Thyago Nunes</strong>
-            <small>instagram</small>
+            <small>LinkedIn</small>
           </div>
-          <span>devthyagonunes@gmail.com </span>
+          <span>devthyagonunes@gmail.com</span>
           <span>(81)99999-9999</span>
         </div>
 
         <div className="actions">
-          <a href="/">
+          <a href="/edit">
             <img src={edit} alt="Edit" />
           </a>
           <button type="button">
@@ -51,14 +51,14 @@ export default function Home() {
         <div className="info">
           <div className="contact-name">
             <strong>Thyago Nunes</strong>
-            <small>instagram</small>
+            <small>LinkedIn</small>
           </div>
-          <span>devthyagonunes@gmail.com </span>
+          <span>devthyagonunes@gmail.com</span>
           <span>(81)99999-9999</span>
         </div>
 
         <div className="actions">
-          <a href="/">
+          <a href="/edit">
             <img src={edit} alt="Edit" />
           </a>
           <button type="button">
@@ -70,14 +70,14 @@ export default function Home() {
         <div className="info">
           <div className="contact-name">
             <strong>Thyago Nunes</strong>
-            <small>instagram</small>
+            <small>LinkedIn</small>
           </div>
-          <span>devthyagonunes@gmail.com </span>
+          <span>devthyagonunes@gmail.com</span>
           <span>(81)99999-9999</span>
         </div>
 
         <div className="actions">
-          <a href="/">
+          <a href="/edit">
             <img src={edit} alt="Edit" />
           </a>
           <button type="button">
