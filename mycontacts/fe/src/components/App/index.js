@@ -14,7 +14,6 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
         <CreateGlobal />
-
         <Container>
           <Header />
           <Routes />
