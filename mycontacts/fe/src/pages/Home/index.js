@@ -36,6 +36,7 @@ export default function Home() {
           </div>
           <span>thyago@mail.com</span>
           <span>(81)99999-9999</span>
+          <span>27-04-1993</span>
         </div>
 
         <div className="actions">
