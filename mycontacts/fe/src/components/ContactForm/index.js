@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
 import { Form, ButtonContainer } from './styles';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
