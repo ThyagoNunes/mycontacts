@@ -13,6 +13,10 @@ class CategoryController {
     if (!existsCategory) {
       return response.status(400).json({ error: 'This Category not exists' });
     }
+    if (!id) {
+      return response.status(400).json({ error: 'ID is required' });
+    }
+    response.json(existsCategory);
   }
 
   async store(request, response) {
