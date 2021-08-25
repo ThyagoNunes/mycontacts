@@ -70,4 +70,5 @@ class CategoryController {
     response.sendStatus(204);
   }
 }
+
 module.exports = new CategoryController();
