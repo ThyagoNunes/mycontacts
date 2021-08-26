@@ -10,6 +10,7 @@ export default function EditContact() {
       <ContactForm
         buttonLabel="Salvar alterações"
       />
+
     </>
   );
 }
