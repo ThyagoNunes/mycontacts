@@ -20,9 +20,7 @@ class CategoryController {
   }
 
   async store(request, response) {
-    const {
-      name,
-    } = request.body;
+    const { name } = request.body;
     const nameUpper = name.toUpperCase();
     const existsCategory = await CategoriesRepository.findByName(name);
     if (existsCategory) {
