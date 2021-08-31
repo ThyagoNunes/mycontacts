@@ -57,7 +57,7 @@ fetch('http://localhost:3001/contacts')
     const json = await response.json();
     console.log('response', response);
     json.forEach((contact) => {
-      console.log(contact.name);
+      console.log(contact);
     });
   })
   .catch((error) => {
