@@ -1,8 +1,9 @@
-const express = require('express');
-const routes = require('./routes');
+import express from 'express';
+import routes from './routes.js';
 
-const cors = require('./app/middlewares/cors');
-const errorHandler = require('./app/middlewares/errorHandler');
+import cors from './app/middlewares/cors.js';
+
+import errorHandler from './app/middlewares/errorHandler.js';
 
 const app = express();
 app.use(express.json());

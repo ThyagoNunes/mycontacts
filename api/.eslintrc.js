@@ -11,10 +11,12 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
-    camelcase: 'off',
-    'no-console': 'off',
-    'consistent-return': 'off',
-    'class-methods-use-this': 'off',
+    camelcase: 0,
+    'no-console': 0,
+    'prefer-const': 0,
+    'import/extensions': 0,
+    'consistent-return': 0,
+    'class-methods-use-this': 0,
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
   },
 };
