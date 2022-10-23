@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
 import { Overlay, Container, Footer } from './styles';
 
 import Button from '../Button';
 
 export default function Modal({ danger }) {
-  return ReactDom.createPortal(
+  return ReactDOM.createPortal(
     <Overlay>
       <Container danger={danger}>
         <h1>Título do modal</h1>
@@ -15,10 +15,13 @@ export default function Modal({ danger }) {
         </p>
 
         <Footer>
-          <button type="button" className="cancel-button">
+          <button
+            type="button"
+            className="cancel-button"
+          >
             Cancelar
           </button>
-          <Button type="button" danger={danger}>
+          <Button danger={danger} type="button">
             Deletar
           </Button>
         </Footer>

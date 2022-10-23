@@ -1,23 +1,26 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import PropTypes from "prop-types";
+import { useState, createContext } from "react";
 
-import isEmailValid from '../../utils/isEmailValid';
-import formatPhone from '../../utils/formatPhone';
-import useErrors from '../../hooks/useErrors';
+import isEmailValid from "../../utils/isEmailValid";
+import formatPhone from "../../utils/formatPhone";
+import useErrors from "../../hooks/useErrors";
 
-import { Form, ButtonContainer } from './styles';
+import { Form, ButtonContainer } from "./styles";
 
-import FormGroup from '../FormGroup';
-import Input from '../Input';
-import Select from '../Select';
-import Button from '../Button';
+import FormGroup from "../FormGroup";
+import Input from "../Input";
+import Select from "../Select";
+import Button from "../Button";
+import Text from "../Text";
+
+const context = createContext("");
 
 export default function ContactForm({ buttonLabel }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [birth, setBirth] = useState('');
-  const [category, setCategory] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [ageDate, setAgeDate] = useState("");
+  const [category, setCategory] = useState("");
 
   const {
     errors,
@@ -26,15 +29,16 @@ export default function ContactForm({ buttonLabel }) {
     getErrorMessageByFieldName,
   } = useErrors();
 
-  const isFormValid = (name && phone && birth && errors.length === 0);
+  const isFormValid = (name && errors.length === 0 && phone.length >= 14);
 
   function handleNameChange(event) {
     setName(event.target.value);
 
     if (!event.target.value) {
-      setError({ field: 'name', message: 'Nome é obrigatório' });
+      // representação booleana. '' = false !'' = true
+      setError({ field: "name", message: "Nome é obrigatório" });
     } else {
-      removeError('name');
+      removeError("name");
     }
   }
 
@@ -42,29 +46,23 @@ export default function ContactForm({ buttonLabel }) {
     setEmail(event.target.value);
 
     if (event.target.value && !isEmailValid(event.target.value)) {
-      setError({ field: 'email', message: 'Email Inválido' });
+      setError({ field: "email", message: "E-mail inválido" });
     } else {
-      removeError('email');
+      removeError("email");
     }
   }
 
   function handlePhoneChange(event) {
     setPhone(formatPhone(event.target.value));
 
-    if (!event.target.value) {
-      setError({ field: 'phone', message: 'Phone é obrigatório' });
-    } else {
-      removeError('phone');
-    }
-  }
+    console.log(event.target.value);
+    const countPhoneChar = event.target.value;
 
-  function handleBirthChange(event) {
-    setBirth(event.target.value);
-
-    if (!event.target.value) {
-      setError({ field: 'birth', message: 'Birth é obrigatório' });
+    console.log(countPhoneChar.length);
+    if (countPhoneChar.length < 13) {
+      setError({ field: "phone", message: "Telefone Inválido" });
     } else {
-      removeError('birth');
+      removeError("phone");
     }
   }
 
@@ -72,48 +70,56 @@ export default function ContactForm({ buttonLabel }) {
     event.preventDefault();
 
     console.log({
-      name, email, phone: phone.replace(/\D/g, ''), birth, category,
+      name,
+      email,
+      phone,
+      ageDate,
+      category,
     });
   }
 
   return (
-    <>
+    <context.Provider
+      value={{
+        onGetErrorMessageByFieldName: getErrorMessageByFieldName,
+      }}
+    >
       <Form onSubmit={handleSubmit} noValidate>
-        <FormGroup error={getErrorMessageByFieldName('name')}>
+        <FormGroup error={getErrorMessageByFieldName("name")}>
           <Input
-            error={getErrorMessageByFieldName('name')}
-            placeholder="Name *"
+            error={getErrorMessageByFieldName("name")}
             value={name}
+            placeholder="Nome *"
             onChange={handleNameChange}
           />
         </FormGroup>
 
-        <FormGroup error={getErrorMessageByFieldName('email')}>
+        <FormGroup error={getErrorMessageByFieldName("email")}>
           <Input
             type="email"
-            error={getErrorMessageByFieldName('email')}
-            placeholder="E-mail *"
+            error={getErrorMessageByFieldName("email")}
             value={email}
+            placeholder="Email"
             onChange={handleEmailChange}
           />
         </FormGroup>
 
-        <FormGroup error={getErrorMessageByFieldName('phone')}>
+        <FormGroup error={getErrorMessageByFieldName("phone")}>
           <Input
-            placeholder="Telefone *"
-            error={getErrorMessageByFieldName('phone')}
+            error={getErrorMessageByFieldName("phone *")}
             value={phone}
+            placeholder="Telefone"
             onChange={handlePhoneChange}
-            minLength="14"
             maxLength="15"
           />
         </FormGroup>
 
         <FormGroup>
+          <Text>Data nascimento:</Text>
           <Input
             type="date"
-            value={birth}
-            onChange={handleBirthChange}
+            value={ageDate}
+            onChange={(event) => setAgeDate(event.target.value)}
           />
         </FormGroup>
 
@@ -124,18 +130,19 @@ export default function ContactForm({ buttonLabel }) {
           >
             <option value="">Categorias</option>
             <option value="Instagram">Instagram</option>
-            <option value="Youtube">Youtube</option>
             <option value="Discord">Discord</option>
+            <option value="Youtube">Youtube</option>
+            <option value="LinkedIn">LinkedIn</option>
           </Select>
         </FormGroup>
 
         <ButtonContainer>
           <Button type="submit" disabled={!isFormValid}>
-            { buttonLabel }
+            {buttonLabel}
           </Button>
         </ButtonContainer>
       </Form>
-    </>
+    </context.Provider>
   );
 }
 

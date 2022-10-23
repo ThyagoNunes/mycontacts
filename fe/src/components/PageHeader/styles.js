@@ -1,23 +1,26 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const Container = styled.div`
     margin-bottom: 24px;
+
   a {
-    text-decoration: none;
     display: flex;
     align-items: center;
-    span{
-      color: ${({ theme }) => theme.colors.primary.main};
-      font-weight: bold;
+    text-decoration: none;
+
+    span {
+    color: ${({ theme }) => theme.colors.primary.main};
+    font-weight: bold ;
+    margin-left: 8px;
     }
 
     img {
-      margin-right: 8px;
-      transform: rotate(-90deg);
+    margin-left: 4px;
+    transform: rotate(-90deg);
     }
+  }
 
-    h1{
-      font-size: 24px;
-    }
+  h1 {
+    font-size: 24px;
   }
 `;

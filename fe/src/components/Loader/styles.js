@@ -40,12 +40,13 @@ export const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(246, 245, 252, 0.8);
+  background: #000;
+  background: rgba(244, 245, 252, 0.7);
   display: flex;
-  align-items: center;
+  align-items: center ;
   justify-content: center;
 
-  .loader {
+.loader {
   color: ${({ theme }) => theme.colors.primary.main};
   font-size: 90px;
   text-indent: -9999em;

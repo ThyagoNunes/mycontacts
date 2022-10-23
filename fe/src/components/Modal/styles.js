@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  position: absolute;
+  backdrop-filter: blur(6px);
+  position:absolute;
   width: 100%;
   height: 100%;
-  left: 0;
   top: 0;
+  left: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center ;
 `;
 
 export const Container = styled.div`
@@ -21,30 +21,31 @@ export const Container = styled.div`
   padding: 24px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
 
-  h1{
+  h1 {
     font-size: 22px;
     color: ${({ theme, danger }) => (
-    danger ? theme.colors.danger.main : theme.colors.gray[900]
+    danger
+      ? theme.colors.danger.main
+      : theme.colors.gray[900]
   )}
   }
 
-  p{
+  p {
     margin-top: 8px;
   }
 `;
 
 export const Footer = styled.footer`
   margin-top: 32px;
-  display: flex;
+  display: flex ;
   align-items: center;
   justify-content: flex-end;
-
 
   .cancel-button {
     background: transparent;
     border: none;
     font-size: 16px;
     margin-right: 8px;
-    color: ${({ theme }) => theme.colors.gray[200]}
+    color: ${({ theme }) => theme.colors.gray[200]};
   }
 `;

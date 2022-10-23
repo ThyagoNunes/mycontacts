@@ -11,10 +11,12 @@ export default styled.select`
   outline: none;
   padding: 0 16px;
   font-size: 16px;
+  font-weight: bold ;
   transition: border-color 0.2s ease-in;
   appearance: none;
 
-  &:focus{
+
+  &:focus {
     border-color: ${({ theme }) => theme.colors.primary.main};
   }
 `;

@@ -1,4 +1,5 @@
 import PageHeader from '../../components/PageHeader';
+
 import ContactForm from '../../components/ContactForm';
 
 export default function EditContact() {
@@ -7,10 +8,10 @@ export default function EditContact() {
       <PageHeader
         title="Editar Thyago Nunes"
       />
+
       <ContactForm
         buttonLabel="Salvar alterações"
       />
-
     </>
   );
 }

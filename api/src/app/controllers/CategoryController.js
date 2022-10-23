@@ -65,6 +65,12 @@ class CategoryController {
   async delete(request, response) {
     const { id } = request.params;
 
+    const findCategory = await CategoriesRepository.findById(id);
+    
+    if(!findCategory){
+      return response.status(404).json({errpr: 'Category not found'})
+    }
+
     await CategoriesRepository.delete(id);
     response.sendStatus(204);
   }

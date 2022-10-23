@@ -1,19 +1,19 @@
-import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import CreateGlobal from '../../assets/styles/global';
+import GlobaStyle from '../../assets/styles/global';
 import defaultTheme from '../../assets/styles/themes/default';
 
-import Header from '../Header';
+import Header from '../Header/index';
 import Routes from '../../Routes';
-
 import { Container } from './styles';
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
-        <CreateGlobal />
+        <GlobaStyle />
+
         <Container>
           <Header />
           <Routes />
