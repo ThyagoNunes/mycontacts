@@ -71,7 +71,7 @@ class CategoryController {
       return response.status(404).json({errpr: 'Category not found'})
     }
 
-    await CategoriesRepository.delete(id);
+    await categoriesRepository.delete(id);
     response.sendStatus(204);
   }
 }
