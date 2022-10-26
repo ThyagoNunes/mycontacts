@@ -115,9 +115,9 @@ class ContactController {
       return response.status(400).json({ error: 'This phone is already in use' });
     }
 
-    const categoryUpdated = await ContactsRepository.findById(categoryId);
+    const categoryUpdated = await ContactsRepository.findByCategoryId(categoryId);
 
-    if (categoryUpdated && categoryUpdated.id !== id) {
+    if (categoryUpdated && categoryUpdated.categoryId !== categoryId) {
       return response.status(400).json({ error: 'This phone is already in use' });
     }
 

@@ -25,6 +25,13 @@ class ContactsRepository {
     const contact = await prismaClient.contact.findFirst({
       where: {
         id,
+      }, 
+      include:{
+        categoryName:{
+          select:{
+            name: true, 
+          }
+        }
       }
     })
     return contact;
@@ -53,6 +60,17 @@ class ContactsRepository {
     const contact = await prismaClient.contact.findFirst({
       where: {
         phone,
+      }
+    })
+    return contact;
+  }
+  
+  
+
+  async findByCategoryId(categoryId) {
+    const contact = await prismaClient.contact.findFirst({
+      where: {
+        categoryId,
       }
     })
     return contact;
